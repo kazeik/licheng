@@ -1,0 +1,13 @@
+{
+	"pages": [
+		"pages/index/index",
+		"pages/car/car",
+		"pages/logs/logs"
+	],
+	"window": {
+		"backgroundTextStyle": "light",
+		"navigationBarBackgroundColor": "#fff",
+		"navigationBarTitleText": "油耗里程计算",
+		"navigationBarTextStyle": "black"
+	}
+}

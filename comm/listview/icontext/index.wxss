@@ -1,0 +1,59 @@
+.adapter_item {
+  padding-left: 22rpx;
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 20rpx;
+}
+
+.item_img {
+  width: 160rpx;
+  height: 160rpx;
+}
+
+.item_content {
+  width: 0rpx;
+  height: 160rpx;
+  padding-right: 20rpx;
+  margin-left: 22rpx;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  flex: 1;
+}
+
+.item_id {
+  height: 80rpx;
+  width: 100%;
+  line-height: 80rpx;
+  vertical-align: middle;
+  color: #333;
+}
+
+.item_title {
+  height: 80rpx;
+  width: 100%;
+  line-height: 80rpx;
+  color: #666;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  vertical-align: middle;
+  display: table-cell;
+}
+
+.item view {
+    width: 120rpx;
+    height: 120rpx;
+}
+
+.item title {
+    height: 40rpx;
+    width: 100%;
+    line-height: 40rpx;
+    color: #666;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    vertical-align: middle;
+    display: table-cell;
+}

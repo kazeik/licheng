@@ -1,0 +1,5 @@
+@import "../../comm/listview/icontext/index.wxss";
+
+.main{
+	padding: 10rpx;
+}

@@ -1,0 +1,9 @@
+<template name="ListViewIconText">
+    <view class='adapter_item'>
+        <image src='{{itemicon}}' class='item_img'></image>
+        <view class="item_content">
+            <text class='item_id'>{{id}}</text>
+            <text class='item_title'>{{itemtitle}}</text>
+        </view>
+    </view>
+</template>
