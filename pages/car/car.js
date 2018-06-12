@@ -23,6 +23,11 @@ Page({
 			data: event.currentTarget.dataset.item,
 			success:data=>{
 				wx.navigateBack()
+			},
+			fail:e=>{
+				wx.showToast({
+					title: '数据添加失败，请重试',
+				})
 			}
 		})
 	},
