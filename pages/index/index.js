@@ -1,13 +1,15 @@
 //index.js
 //获取应用实例
 const app = getApp()
-
+var timer;
 Page({
 	data: {
 		motto: 'Hello World',
 		userInfo: {},
 		hasUserInfo: false,
-		canIUse: wx.canIUse('button.open-type.getUserInfo')
+		canIUse: wx.canIUse('button.open-type.getUserInfo'),
+		hideAd: false,
+		adInfo:"今日油价:92# 7.32元/升，95# 8元/升 0# 6.8元/升 97# 8.5元/升"
 	},
 	//事件处理函数
 	bindViewTap: function () {
@@ -72,7 +74,19 @@ Page({
 				}
 			})
 		} else {
-			app.globalData.car= car
+			app.globalData.car = car
 		}
+	},
+	//记录数据
+	addrecord: function (data) {
+		wx.navigateTo({
+			'url':"../addrecord/index"			
+		})
+	},
+	//定时更改广告内容
+	changeAdInfo:function(){
+		timer = setTimeout(()=>{
+
+		},2000);
 	}
 })

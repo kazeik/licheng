@@ -3,6 +3,7 @@
 		"pages/index/index",
 		"pages/car/car",
 		"pages/statistics/statistics",
+		"pages/addrecord/index",
 		"pages/user/user",
 		"pages/logs/logs"
 	],
