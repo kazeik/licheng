@@ -2,6 +2,8 @@
 	"pages": [
 		"pages/index/index",
 		"pages/car/car",
+		"pages/statistics/statistics",
+		"pages/user/user",
 		"pages/logs/logs"
 	],
 	"window": {
@@ -9,5 +11,30 @@
 		"navigationBarBackgroundColor": "#fff",
 		"navigationBarTitleText": "油耗里程计算",
 		"navigationBarTextStyle": "black"
+	},
+	"tabBar": {
+		"color": "#a9b7b7",
+		"selectedColor": "#1afa29",
+		"borderStyle": "white",
+		"list": [
+			{
+				"selectedIconPath": "/imgs/icon_add_pressed.png",
+				"iconPath": "/imgs/icon_add_normal.png",
+				"pagePath": "pages/index/index",
+				"text": "首页"
+			},
+			{
+				"selectedIconPath": "/imgs/icon_tj_pressed.png",
+				"iconPath": "/imgs/icon_tj_normal.png",
+				"pagePath": "pages/statistics/statistics",
+				"text": "统计"
+			},
+			{
+				"selectedIconPath": "/imgs/icon_user_pressed.png",
+				"iconPath": "/imgs/icon_user_normal.png",
+				"pagePath": "pages/user/user",
+				"text": "我"
+			}
+		]
 	}
 }

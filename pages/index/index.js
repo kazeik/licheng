@@ -11,9 +11,11 @@ Page({
 	},
 	//事件处理函数
 	bindViewTap: function () {
-		wx.navigateTo({
-			url: '../logs/logs'
-		})
+		// wx.navigateTo({
+		// 	url: '../logs/logs'
+		// })
+		// console.log(this.data.itemdata)
+
 	},
 	onReady: function (ex) {
 		this.checkDatadb()
@@ -56,9 +58,8 @@ Page({
 	},
 	//检查是否设置过车辆
 	checkDatadb: function (dbdata) {
-		var carBrand = wx.getStorageSync("carBrand")
-		var carType = wx.getStorageSync("carType")
-		if (!carBrand || !carType) {
+		var car = wx.getStorageSync("car")
+		if (!car) {
 			wx.showModal({
 				title: '提示',
 				content: '您当前没有设置车辆，请设置您的爱车',
@@ -71,8 +72,7 @@ Page({
 				}
 			})
 		} else {
-			app.globalData.carBrand = carBrand
-			app.globalData.carType = carType
+			app.globalData.car= car
 		}
 	}
 })

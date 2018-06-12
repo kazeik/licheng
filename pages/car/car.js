@@ -8,11 +8,23 @@ Page({
 		hasUserInfo: false,
 		canIUse: wx.canIUse('button.open-type.getUserInfo'),
 		cardata: null,
-	
+
 	},
 
-	itemevent:function(event){
+	itemevent: function (event) {
 		console.log(event.currentTarget.dataset.item)
+		var pages = getCurrentPages()
+		var currentPages = pages[pages.length - 1]
+		var lastPages = pages[pages.length - 2]
+		lastPages.setData({ itemdata: event.currentTarget.dataset.item })
+		wx.setStorageSync('car', event.currentTarget.dataset.item)
+		wx.setStorage({
+			key: 'car',
+			data: event.currentTarget.dataset.item,
+			success:data=>{
+				wx.navigateBack()
+			}
+		})
 	},
 
 	//事件处理函数
@@ -25,41 +37,41 @@ Page({
 
 	onLoad: function () {
 		var tempData = [
-			{ id: 1, itemtitle: 'title1' ,itemicon:'../imgs/icon.jpg'},
-			{ id: 2, itemtitle: 'title2' ,itemicon:'../imgs/icon.jpg'},
-			{ id: 3, itemtitle: 'title3' ,itemicon:'../imgs/icon.jpg'},
-			{ id: 4, itemtitle: '12131231' ,itemicon:'../imgs/icon.jpg'},
-			{ id: 5, itemtitle: 'title5' ,itemicon:'../imgs/icon.jpg'},
-			{ id: 3, itemtitle: 'title3' ,itemicon:'../imgs/icon.jpg'},
-			{ id: 4, itemtitle: '12131231' ,itemicon:'../imgs/icon.jpg'},
-			{ id: 5, itemtitle: 'title5' ,itemicon:'../imgs/icon.jpg'},
-			{ id: 3, itemtitle: 'title3' ,itemicon:'../imgs/icon.jpg'},
-			{ id: 4, itemtitle: '12131231' ,itemicon:'../imgs/icon.jpg'},
-			{ id: 5, itemtitle: 'title5' ,itemicon:'../imgs/icon.jpg'},
-			{ id: 3, itemtitle: 'title3' ,itemicon:'../imgs/icon.jpg'},
-			{ id: 4, itemtitle: '12131231' ,itemicon:'../imgs/icon.jpg'},
-			{ id: 5, itemtitle: 'title5' ,itemicon:'../imgs/icon.jpg'},
-			{ id: 3, itemtitle: 'title3' ,itemicon:'../imgs/icon.jpg'},
-			{ id: 4, itemtitle: '12131231' ,itemicon:'../imgs/icon.jpg'},
-			{ id: 5, itemtitle: 'title5' ,itemicon:'../imgs/icon.jpg'},
-			{ id: 3, itemtitle: 'title3' ,itemicon:'../imgs/icon.jpg'},
-			{ id: 4, itemtitle: '12131231' ,itemicon:'../imgs/icon.jpg'},
-			{ id: 5, itemtitle: 'title5' ,itemicon:'../imgs/icon.jpg'}, 
-			{ id: 3, itemtitle: 'title3' ,itemicon:'../imgs/icon.jpg'},
-			{ id: 4, itemtitle: '12131231' ,itemicon:'../imgs/icon.jpg'},
-			{ id: 5, itemtitle: 'title5' ,itemicon:'../imgs/icon.jpg'},
-			{ id: 3, itemtitle: 'title3' ,itemicon:'../imgs/icon.jpg'},
-			{ id: 4, itemtitle: '12131231' ,itemicon:'../imgs/icon.jpg'},
-			{ id: 5, itemtitle: 'title5' ,itemicon:'../imgs/icon.jpg'},
-			{ id: 3, itemtitle: 'title3' ,itemicon:'../imgs/icon.jpg'},
-			{ id: 4, itemtitle: '12131231' ,itemicon:'../imgs/icon.jpg'},
-			{ id: 5, itemtitle: 'title5' ,itemicon:'../imgs/icon.jpg'},
-			{ id: 3, itemtitle: 'title3' ,itemicon:'../imgs/icon.jpg'},
-			{ id: 4, itemtitle: '12131231' ,itemicon:'../imgs/icon.jpg'},
-			{ id: 5, itemtitle: 'title5' ,itemicon:'../imgs/icon.jpg'},
-			{ id: 3, itemtitle: 'title3' ,itemicon:'../imgs/icon.jpg'},
-			{ id: 4, itemtitle: '12131231' ,itemicon:'../imgs/icon.jpg'},
-			{ id: 5, itemtitle: 'title5' ,itemicon:'../imgs/icon.jpg'}]
+			{ id: 1, itemtitle: 'title1', itemicon: 'imgs/icon.jpg' },
+			{ id: 2, itemtitle: 'title2', itemicon: 'imgs/icon.jpg' },
+			{ id: 3, itemtitle: 'title3', itemicon: 'imgs/icon.jpg' },
+			{ id: 4, itemtitle: '12131231', itemicon: 'imgs/icon.jpg' },
+			{ id: 5, itemtitle: 'title5', itemicon: 'imgs/icon.jpg' },
+			{ id: 6, itemtitle: 'title3', itemicon: 'imgs/icon.jpg' },
+			{ id: 7, itemtitle: '12131231', itemicon: 'imgs/icon.jpg' },
+			{ id: 8, itemtitle: 'title5', itemicon: 'imgs/icon.jpg' },
+			{ id: 9, itemtitle: 'title3', itemicon: 'imgs/icon.jpg' },
+			{ id: 10, itemtitle: '12131231', itemicon: 'imgs/icon.jpg' },
+			{ id: 11, itemtitle: 'title5', itemicon: 'imgs/icon.jpg' },
+			{ id: 12, itemtitle: 'title3', itemicon: 'imgs/icon.jpg' },
+			{ id: 13, itemtitle: '12131231', itemicon: 'imgs/icon.jpg' },
+			{ id: 14, itemtitle: 'title5', itemicon: 'imgs/icon.jpg' },
+			{ id: 15, itemtitle: 'title3', itemicon: 'imgs/icon.jpg' },
+			{ id: 16, itemtitle: '12131231', itemicon: 'imgs/icon.jpg' },
+			{ id: 17, itemtitle: 'title5', itemicon: 'imgs/icon.jpg' },
+			{ id: 18, itemtitle: 'title3', itemicon: 'imgs/icon.jpg' },
+			{ id: 19, itemtitle: '12131231', itemicon: 'imgs/icon.jpg' },
+			{ id: 20, itemtitle: 'title5', itemicon: 'imgs/icon.jpg' },
+			{ id: 21, itemtitle: 'title3', itemicon: 'imgs/icon.jpg' },
+			{ id: 22, itemtitle: '12131231', itemicon: 'imgs/icon.jpg' },
+			{ id: 23, itemtitle: 'title5', itemicon: 'imgs/icon.jpg' },
+			{ id: 24, itemtitle: 'title3', itemicon: 'imgs/icon.jpg' },
+			{ id: 25, itemtitle: '12131231', itemicon: 'imgs/icon.jpg' },
+			{ id: 26, itemtitle: 'title5', itemicon: 'imgs/icon.jpg' },
+			{ id: 27, itemtitle: 'title3', itemicon: 'imgs/icon.jpg' },
+			{ id: 28, itemtitle: '12131231', itemicon: 'imgs/icon.jpg' },
+			{ id: 29, itemtitle: 'title5', itemicon: 'imgs/icon.jpg' },
+			{ id: 30, itemtitle: 'title3', itemicon: 'imgs/icon.jpg' },
+			{ id: 31, itemtitle: '12131231', itemicon: 'imgs/icon.jpg' },
+			{ id: 32, itemtitle: 'title5', itemicon: 'imgs/icon.jpg' },
+			{ id: 33, itemtitle: 'title3', itemicon: 'imgs/icon.jpg' },
+			{ id: 34, itemtitle: '12131231', itemicon: 'imgs/icon.jpg' },
+			{ id: 35, itemtitle: 'title5', itemicon: 'imgs/icon.jpg' }]
 		this.setData({ cardata: tempData })
 
 		if (app.globalData.userInfo) {

@@ -35,7 +35,6 @@ App({
   },
   globalData: {
     userInfo: null,
-	carBrand:null,
-	carType:null
+	car:null
   }
 })
