@@ -8,8 +8,9 @@ Page({
 		userInfo: {},
 		hasUserInfo: false,
 		canIUse: wx.canIUse('button.open-type.getUserInfo'),
-		hideAd: false,
-		adInfo:"今日油价:92# 7.32元/升，95# 8元/升 0# 6.8元/升 97# 8.5元/升"
+		hideAd: true,
+		adInfo: null,
+		carInfo: {}
 	},
 	//事件处理函数
 	bindViewTap: function () {
@@ -19,10 +20,17 @@ Page({
 		// console.log(this.data.itemdata)
 
 	},
-	onReady: function (ex) {
-		this.checkDatadb()
+
+	onShow: function (ex) {
+		// this.checkDatadb()
+
 	},
-	onLoad: function () {
+
+	// onShow:function(){
+
+	// },
+
+	onLoad: function (option) {
 		if (app.globalData.userInfo) {
 			this.setData({
 				userInfo: app.globalData.userInfo,
@@ -49,6 +57,8 @@ Page({
 				}
 			})
 		}
+		this.checkDatadb()
+		this.changeAdInfo()
 	},
 	getUserInfo: function (e) {
 		console.log(e)
@@ -75,18 +85,24 @@ Page({
 			})
 		} else {
 			app.globalData.car = car
+			this.setData({
+				carInfo: car
+			})
 		}
 	},
 	//记录数据
 	addrecord: function (data) {
 		wx.navigateTo({
-			'url':"../addrecord/index"			
+			'url': "../addrecord/index"
 		})
 	},
 	//定时更改广告内容
-	changeAdInfo:function(){
-		timer = setTimeout(()=>{
-
-		},2000);
+	changeAdInfo: function () {
+		timer = setTimeout(() => {
+			this.setData({
+				adInfo: "今日油价:92# 7.32元/升，95# 8元/升 0# 6.8元/升 97# 8.5元/升",
+				hideAd: false
+			})
+		}, 2000);
 	}
 })

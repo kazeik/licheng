@@ -8,15 +8,13 @@ Page({
 		hasUserInfo: false,
 		canIUse: wx.canIUse('button.open-type.getUserInfo'),
 		cardata: null,
-
 	},
 
 	itemevent: function (event) {
-		console.log(event.currentTarget.dataset.item)
 		var pages = getCurrentPages()
 		var currentPages = pages[pages.length - 1]
 		var lastPages = pages[pages.length - 2]
-		lastPages.setData({ itemdata: event.currentTarget.dataset.item })
+		lastPages.setData({ carInfo: event.currentTarget.dataset.item })
 		wx.setStorageSync('car', event.currentTarget.dataset.item)
 		wx.setStorage({
 			key: 'car',
@@ -31,15 +29,6 @@ Page({
 			}
 		})
 	},
-
-	//事件处理函数
-	bindViewTap: function () {
-		wx.navigateTo({
-			url: '../logs/logs'
-		})
-	},
-
-
 	onLoad: function () {
 		var tempData = [
 			{ id: 1, itemtitle: 'title1', itemicon: '../../imgs/icon.jpg' },

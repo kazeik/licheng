@@ -2,9 +2,6 @@
 
 <view class="main">
     <view wx:for="{{cardata}}" wx:key="{{cardata}}" bindtap="itemevent" data-item='{{item}}'>
-      
             <template is="ListViewIconText" data="{{...item}}"></template>
-     
     </view>
-
 </view>

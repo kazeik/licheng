@@ -12,7 +12,7 @@
 
     <!-- 顶部区域 -->
     <view class='toprang'>
-
+        <text class="userinfo-nickname">您的爱车:{{carInfo.itemtitle}}</text>
     </view>
     <view class='textadrang' hidden='{{hideAd}}'>
         <text class='textad'>{{adInfo}}</text>
