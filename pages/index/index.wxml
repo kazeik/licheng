@@ -12,7 +12,23 @@
 
     <!-- 顶部区域 -->
     <view class='toprang'>
-        <text class="userinfo-nickname">您的爱车:{{carInfo.itemtitle}}</text>
+        <view class='info'>
+            <text class="carbrand">您的爱车:{{carInfo.itemtitle}}</text>
+            <view>
+                <text class="carbrand">平均油耗:</text>
+                <text class="carbrand-info">{{carInfo.itemtitle}}</text>
+            </view>
+        </view>
+        <view class='bottomview'>
+            <view class='blockview'>
+                <text class="bottomlineview">累计加油量</text>
+				<text class="dataview">{{oilValue}}</text>
+            </view>
+            <view class='blockview'>
+                <text class='bottomlineview'>累计支出</text>
+				<text class="dataview">{{moneyValue}}</text>
+            </view>
+        </view>
     </view>
     <view class='textadrang' hidden='{{hideAd}}'>
         <text class='textad'>{{adInfo}}</text>

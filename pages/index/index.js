@@ -10,7 +10,9 @@ Page({
 		canIUse: wx.canIUse('button.open-type.getUserInfo'),
 		hideAd: true,
 		adInfo: null,
-		carInfo: {}
+		carInfo: {},
+		oilValue:"123L",
+		moneyValue:"123元"
 	},
 	//事件处理函数
 	bindViewTap: function () {
