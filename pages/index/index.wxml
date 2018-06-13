@@ -13,9 +13,16 @@
     <!-- 顶部区域 -->
     <view class='toprang'>
         <view class='info'>
-            <text class="carbrand">您的爱车:{{carInfo.itemtitle}}</text>
+			<view class='cartitle'>
+			 <text class='cartext'>{{carInfo.itemtitle}}</text>
+			</view>
+           
             <view>
                 <text class="carbrand">平均油耗:</text>
+                <text class="carbrand-info">{{carInfo.itemtitle}}</text>
+            </view>
+			<view>
+                <text class="carbrand">累记里程:</text>
                 <text class="carbrand-info">{{carInfo.itemtitle}}</text>
             </view>
         </view>

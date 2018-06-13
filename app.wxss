@@ -9,3 +9,34 @@
   padding: 200rpx 0;
   box-sizing: border-box;
 }  
+.btn {
+    margin-left: 30rpx;
+    margin-right: 30rpx;
+    margin-top: 20rpx;
+    margin-bottom: 40rpx;
+}
+.input{
+	font-size: 12px;
+	margin: 15rpx;
+	padding: 10rpx;
+	background-color: white;
+}
+.input-singline-right{
+	font-size: 12px;
+	text-align: right;
+	width: 100%;
+	padding-right:15rpx; 
+}
+.textview{
+	font-size: 12px;
+	color: "#999999";
+	padding: 10px;
+	width: 20%;
+}
+.textview-single-right{
+	font-size: 12px;
+	color: "#999999";
+	padding: 10px;
+	width: 100%;
+	text-align: right;
+}

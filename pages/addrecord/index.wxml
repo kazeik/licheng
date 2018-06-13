@@ -1,1 +1,44 @@
-<view></view>
+<view>
+    <form bindsubmit="submitdata">
+        <view class='line-jiange'></view>
+        <view class="timeselect">
+            <label class='textview'>加油日期</label>
+            <picker class='picker' mode="date" value="{{date}}" start="2010-01-01" end="{{currentDate}}" name='date'>
+                <view>{{date}}</view>
+            </picker>
+        </view>
+        <view class='line-jiange'></view>
+        <view class="timeselect">
+            <label class='textview'>当前里程</label>
+            <input class='input-singline-right' type='digit' maxlength='8' placeholder='请输入当前里程' confirm-type='next' name='currentlicheng'></input>
+        </view>
+        <view class='line-jiange'></view>
+        <view>
+            <view class='oilview'>
+                <label class='textview'>油量(L)</label>
+                <label class='textview'>单价(元/L)</label>
+                <label class='textview'>金额(元)</label>
+            </view>
+            <view class='oilview'>
+                <input type='number' placeholder='加油量' class='input' maxlength='6' confirm-type='next' name='oilvalue'></input>
+                <input type='digit' placeholder='当前油价' class='input' maxlength='6' confirm-type='next' name='currentmoney'></input>
+                <input type='digit' placeholder='总价钱' class='input' maxlength='6' confirm-type='next' name='allmoney'></input>
+            </view>
+        </view>
+        <view class='line-jiange'></view>
+        <view class="timeselect">
+            <label class='textview'>燃油标号</label>
+            <picker class='picker' value="{{index}}" range="{{oilarray}}" name='oiltype'>
+                <view class='textview-right'>{{oilarray[index]}}</view>
+            </picker>
+        </view>
+        <view class='line-jiange'></view>
+        <view class='about'>
+            <label class='textview'>备注</label>
+            <input type='text' placeholder='说点什么' class='input' confirm-type='done' name='about'></input>
+        </view>
+        <view class="btn">
+            <button class='weuibtn' type='primary' formType="submit">保存</button>
+        </view>
+    </form>
+</view>
