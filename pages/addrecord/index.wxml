@@ -3,7 +3,7 @@
         <view class='line-jiange'></view>
         <view class="timeselect">
             <label class='textview'>加油日期</label>
-            <picker class='picker' mode="date" value="{{date}}" start="2010-01-01" end="{{currentDate}}" name='date'>
+            <picker class='picker' mode="date" value="{{date}}" bindchange="bindDateChange" start="2010-01-01" end="{{currentDate}}" name='date'>
                 <view>{{date}}</view>
             </picker>
         </view>
@@ -28,7 +28,7 @@
         <view class='line-jiange'></view>
         <view class="timeselect">
             <label class='textview'>燃油标号</label>
-            <picker class='picker' value="{{index}}" range="{{oilarray}}" name='oiltype'>
+            <picker class='picker' value="{{index}}" bindchange="bindPickerChange" range="{{oilarray}}" name='oiltype'>
                 <view class='textview-right'>{{oilarray[index]}}</view>
             </picker>
         </view>

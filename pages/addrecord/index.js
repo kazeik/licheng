@@ -8,19 +8,21 @@ Page({
 	 * 页面的初始数据
 	 */
 	data: {
-		date: '2016-09-01',
-		currentDate:null,
+		date: "2018-06-13",
+		currentDate: '',
 		index: 0,
-		oilarray: ['92#汽油', '95#汽油', '97#汽油', '0#柴油', 'E92#乙醇汽油', 'E95#乙醇汽油', 'E97#乙醇汽油']
+		oilarray: ['92#汽油', '95#汽油', '97#汽油', '0#柴油', 'E92#乙醇汽油', 'E95#乙醇汽油', 'E97#乙醇汽油'],
+		oiltype: ""
 	},
 
 	/**
 	 * 生命周期函数--监听页面加载
 	 */
 	onLoad: function (options) {
-		console.log(this.formatTimeYMD(new Date()))
+		// console.log(this.data.oilarray[this.data.index])
 		this.setData({
-			currentDate: wxutil.formatTime(new Date())
+			oiltype: this.data.oilarray[this.data.index],
+			currentDate: this.formatTimeYMD(new Date())
 		})
 	},
 
@@ -73,42 +75,44 @@ Page({
 
 	},
 	//保存记录
-	saverecord:function(){
+	saverecord: function () {
 
 	},
 	//输入当前油量
-	inputoil:function(text){
+	inputoil: function (text) {
 
 	},
 	//输入当前油价
-	inputoilmoney:function(text){
+	inputoilmoney: function (text) {
 
 	},
 	//输入当前金额
-	inputmoney:function(text){
+	inputmoney: function (text) {
 
 	},
-	bindDateChange:function(date){
+	bindDateChange: function (date) {
 		this.setData({
 			date: date.detail.value
 		})
 	},
-	formatTimeYMD:function(date){
+	formatTimeYMD: function (date) {
 		const year = date.getFullYear()
 		const month = date.getMonth() + 1
 		const day = date.getDate()
 		return year + "-" + month + "-" + day
 	},
-	inputlicheng:function(text){
+	inputlicheng: function (text) {
 
 	},
-	oiltypeselect:function(type){
+	bindPickerChange: function (oiltype) {
+		this.setData({
+			index: oiltype.detail.value
+		})
+	},
+	inputmessage: function (text) {
 
 	},
-	inputmessage:function(text){
-
-	},
-	submitdata:function(formdata){
-		console.log("-->  "+JSON.stringify(formdata.detail.value))
+	submitdata: function (formdata) {
+		console.log("-->  " + JSON.stringify(formdata.detail.value))
 	}
 })
