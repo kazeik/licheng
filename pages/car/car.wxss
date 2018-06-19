@@ -3,3 +3,13 @@
 .main{
 	padding: 10rpx;
 }
+
+.smallicon{
+	width: 60rpx;
+	height: 60rpx;
+	margin: 10rpx;
+}
+.lineview{
+	display: flex;
+	flex-flow: row;
+}

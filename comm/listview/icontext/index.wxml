@@ -1,9 +1,9 @@
 <template name="ListViewIconText">
     <view class='adapter_item'>
-        <image src='{{itemicon}}' class='item_img'></image>
+        <image src='{{itemicon.length==0?itemicon:"../../imgs/icon.jpg"}}' class='item_img'></image>
         <view class="item_content">
-            <text class='item_id'>{{id}}</text>
-            <text class='item_title'>{{itemtitle}}</text>
+            <text class='item_id'>{{carbrandid}}</text>
+            <text class='item_title'>{{cartype}}</text>
         </view>
     </view>
 </template>
