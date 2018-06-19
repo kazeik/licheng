@@ -1,6 +1,9 @@
 //index.js
 //获取应用实例
+var utils = require("../../utils/util.js");
+
 const app = getApp()
+
 var timer;
 Page({
 	data: {
@@ -11,8 +14,8 @@ Page({
 		hideAd: true,
 		adInfo: null,
 		carInfo: {},
-		oilValue:"123L",
-		moneyValue:"123元"
+		oilValue: "123L",
+		moneyValue: "123元"
 	},
 	//事件处理函数
 	bindViewTap: function () {
@@ -33,6 +36,7 @@ Page({
 	// },
 
 	onLoad: function (option) {
+		console.log(app.globalData.userInfo)
 		if (app.globalData.userInfo) {
 			this.setData({
 				userInfo: app.globalData.userInfo,
@@ -60,7 +64,8 @@ Page({
 			})
 		}
 		this.checkDatadb()
-		this.changeAdInfo()
+		// this.changeAdInfo()
+		this.requestAdInfo()
 	},
 	getUserInfo: function (e) {
 		console.log(e)
@@ -106,5 +111,19 @@ Page({
 				hideAd: false
 			})
 		}, 2000);
+	},
+	requestAdInfo :function() {
+		wx.request({
+			url: app.globalData.url + 'public/getoilprice/',
+			data:{
+				"date": utils.formatTimeYMD()
+			},
+			success: d => {
+				console.log(d)
+			 }, 
+			fail: e => {
+				console.log(e)
+			}
+		})
 	}
 })

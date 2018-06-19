@@ -15,17 +15,40 @@ Page({
 		var currentPages = pages[pages.length - 1]
 		var lastPages = pages[pages.length - 2]
 		lastPages.setData({ carInfo: event.currentTarget.dataset.item })
-		wx.setStorageSync('car', event.currentTarget.dataset.item)
-		wx.setStorage({
-			key: 'car',
-			data: event.currentTarget.dataset.item,
-			success:data=>{
-				wx.navigateBack()
+		// wx.setStorageSync('car', event.currentTarget.dataset.item)
+		this.setCarData(event.currentTarget.dataset.item)
+	},
+	setCarData: function (info) {
+		var longtime = new Date().getTime()
+		wx.request({
+			url: app.globalData.url + 'car/addcar/',
+			data: {
+				'uid': '1237' + longtime,
+				'carbrand': info.itemtitle,
+				'cartype': info.itemtitle
 			},
-			fail:e=>{
+			success: datas => {
+				console.log(datas.data)
 				wx.showToast({
-					title: '数据添加失败，请重试',
+					title: datas.data.message,
 				})
+				if (datas.data.flag == "1" && datas.data.data == "1") {
+					wx.setStorage({
+						key: 'car',
+						data: info,
+						success: data => {
+							wx.navigateBack()
+						},
+						fail: e => {
+							wx.showToast({
+								title: '数据添加失败，请重试',
+							})
+						}
+					})
+				}
+			},
+			fail: e => {
+				console.log(e)
 			}
 		})
 	},
