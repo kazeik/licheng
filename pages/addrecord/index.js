@@ -1,6 +1,7 @@
 const app = getApp()
 
 const wxutil = require('../../utils/util.js')
+const utils = require('../../utils/util.js')
 
 Page({
 
@@ -8,10 +9,10 @@ Page({
 	 * 页面的初始数据
 	 */
 	data: {
-		date: "2018-06-13",
+		date: '',
 		currentDate: '',
 		index: 0,
-		oilarray: ['92#汽油', '95#汽油', '97#汽油', '0#柴油', 'E92#乙醇汽油', 'E95#乙醇汽油', 'E97#乙醇汽油'],
+		oilarray: [],
 		oiltype: ""
 	},
 
@@ -19,11 +20,12 @@ Page({
 	 * 生命周期函数--监听页面加载
 	 */
 	onLoad: function (options) {
-		// console.log(this.data.oilarray[this.data.index])
 		this.setData({
 			oiltype: this.data.oilarray[this.data.index],
-			currentDate: this.formatTimeYMD(new Date())
+			currentDate: utils.formatTimeYMD(),
+			date:utils.formatTimeYMD()
 		})
+		this.requstOilType()
 	},
 
 	/**
@@ -95,12 +97,7 @@ Page({
 			date: date.detail.value
 		})
 	},
-	formatTimeYMD: function (date) {
-		const year = date.getFullYear()
-		const month = date.getMonth() + 1
-		const day = date.getDate()
-		return year + "-" + month + "-" + day
-	},
+
 	inputlicheng: function (text) {
 
 	},
@@ -113,6 +110,44 @@ Page({
 
 	},
 	submitdata: function (formdata) {
-		console.log("-->  " + JSON.stringify(formdata.detail.value))
+		wx.request({
+			url: app.globalData.url + '/record/addRecord',
+			data:{
+				'uid':'test',
+				'date': formdata.detail.value.date,
+				'alllicheng': formdata.detail.value.currentlicheng,
+				'oilvalue': formdata.detail.value.oilvalue,
+				'currentmoney': formdata.detail.value.currentmoney,
+				'allmoney': formdata.detail.value.allmoney,
+				'about': formdata.detail.value.about,
+				'oiltype': formdata.detail.value.oiltype
+			},
+			success:d=>{
+				wx.showToast({
+					title: d.data.message
+				})
+			},
+			fail:e=>{
+
+			}
+		})
+	},
+	requstOilType:function(){
+		wx.request({
+			url: app.globalData.url +'/public/getoiltype',
+			success:d=>{
+				var array = new Array()
+				for(var index in d.data.data){
+					var oilname = d.data.data[index].oilname
+					array.push(oilname)	
+				}
+				this.setData({
+					oilarray: array
+				})
+			},
+			fail:e=>{
+
+			}
+		})
 	}
 })
