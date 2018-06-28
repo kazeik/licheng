@@ -12,4 +12,7 @@
     <view>
         <text class='textview'>关于我们</text>
     </view>
+	<view>
+        <text class='textview' bindtap='feedback'>意见反馈</text>
+    </view>
 </view>

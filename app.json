@@ -5,7 +5,7 @@
 		"pages/statistics/statistics",
 		"pages/addrecord/index",
 		"pages/user/user",
-		"pages/logs/logs"
+		"pages/feedback/feedback"
 	],
 	"window": {
 		"backgroundTextStyle": "light",
