@@ -15,7 +15,9 @@ Page({
 		adInfo: null,
 		carInfo: {},
 		oilValue: "123L",
-		moneyValue: "123元"
+		moneyValue: "123元",
+		pjlc: '',
+		ljlc: ''
 	},
 	//事件处理函数
 	bindViewTap: function () {
@@ -95,7 +97,29 @@ Page({
 			this.setData({
 				carInfo: car
 			})
+			this.requestMainData()
 		}
+	},
+	requestMainData: function () {
+		wx.request({
+			url: app.globalData.url + 'user/gethomedata',
+			data: {
+				'uid': 'test'
+			},
+			success: d => {
+				if (d.data.flag == '1') {
+					this.setData({
+						oilValue: d.data.data.alloilvalue + "L",
+						moneyValue: d.data.data.allmoney + "元",
+						pjlc: d.data.data.pingjun+"L",
+						ljlc: d.data.data.alllicheng+"公里"
+					})
+				}
+			},
+			fail: e => {
+
+			}
+		})
 	},
 	//记录数据
 	addrecord: function (data) {
@@ -112,17 +136,17 @@ Page({
 			})
 		}, 2000);
 	},
-	requestAdInfo :function() {
+	requestAdInfo: function () {
 		wx.request({
 			url: app.globalData.url + 'public/getoilprice/',
-			data:{
+			data: {
 				"date": utils.formatTimeYMD()
 			},
 			success: d => {
-				console.log(d)
-			 }, 
+				
+			},
 			fail: e => {
-				console.log(e)
+				
 			}
 		})
 	}

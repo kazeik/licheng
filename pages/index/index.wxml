@@ -19,11 +19,11 @@
            
             <view>
                 <text class="carbrand">平均油耗:</text>
-                <text class="carbrand-info">{{carInfo.itemtitle}}</text>
+                <text class="carbrand-info">{{pjlc}}</text>
             </view>
 			<view>
                 <text class="carbrand">累记里程:</text>
-                <text class="carbrand-info">{{carInfo.itemtitle}}</text>
+                <text class="carbrand-info">{{ljlc}}</text>
             </view>
         </view>
         <view class='bottomview'>
