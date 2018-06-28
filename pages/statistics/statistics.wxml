@@ -1,0 +1,12 @@
+<view class='page'>
+
+    <view>
+		<label class='textview'>油价及加油量</label>
+        <canvas canvas-id="lineCanvas" disable-scroll="true" class="canvas" bindtouchstart="touchHandler"></canvas>
+    </view>
+      <view>
+        <label class='textview'>平均油耗趋势</label>
+        <canvas canvas-id="lineOil" disable-scroll="true" class="canvas"  bindtouchstart="oilTouchHandler"></canvas>
+    </view>  
+
+</view>

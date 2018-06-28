@@ -1,0 +1,9 @@
+.page{
+	display: flex;
+	flex-direction: column;
+}
+
+.canvas {
+    width: 100%;
+    height: 200px;
+}
