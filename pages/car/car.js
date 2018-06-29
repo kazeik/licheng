@@ -1,6 +1,7 @@
 //index.js
 //获取应用实例
 const app = getApp()
+var httpNet = require("../../utils/httputils.js")
 Page({
 	data: {
 		motto: 'Hello World',
@@ -20,35 +21,28 @@ Page({
 	},
 	setCarData: function (info) {
 		var longtime = new Date().getTime()
-		wx.request({
-			url: app.globalData.url + 'car/addcar/',
-			data: {
-				'uid': '1237' + longtime,
-				'carbrand': info.itemtitle,
-				'cartype': info.itemtitle
-			},
-			success: datas => {
-				console.log(datas.data)
-				wx.showToast({
-					title: datas.data.message,
+		var params = {
+			'uid': '1237' + longtime,
+			'carbrand': info.itemtitle,
+			'cartype': info.itemtitle
+		}
+		httpNet.getRequest("car/addcar",params,function(res){
+			wx.showToast({
+				title: res.data.message,
+			})
+			if (res.flag == "1" && res.data == "1") {
+				wx.setStorage({
+					key: 'car',
+					data: info,
+					success: data => {
+						wx.navigateBack()
+					},
+					fail: e => {
+						wx.showToast({
+							title: '数据添加失败，请重试',
+						})
+					}
 				})
-				if (datas.data.flag == "1" && datas.data.data == "1") {
-					wx.setStorage({
-						key: 'car',
-						data: info,
-						success: data => {
-							wx.navigateBack()
-						},
-						fail: e => {
-							wx.showToast({
-								title: '数据添加失败，请重试',
-							})
-						}
-					})
-				}
-			},
-			fail: e => {
-				console.log(e)
 			}
 		})
 	},
@@ -91,20 +85,14 @@ Page({
 		})
 	},
 	loadcarsData:function(){
-		wx.request({
-			url: app.globalData.url +'public/loadcars',
-			success:d=>{
-				if(d.data.flag=='1' && d.data.data.length != 0){
-					console.log(d.data.data)
-					this.setData({ cardata: d.data.data })
-				}else{
-					wx.showToast({
-						title: d.data.message,
-					})
-				}
-			},
-			fail:e=>{
-
+		var that = this
+		httpNet.getRequest("public/loadcars",null,function(res){
+			if(res.flag=='1' && res.data.length != 0){
+				that.setData({ cardata: res.data })
+			}else{
+				wx.showToast({
+					title: res.message,
+				})
 			}
 		})
 	}

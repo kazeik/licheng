@@ -1,7 +1,8 @@
 const app = getApp()
 
-const wxutil = require('../../utils/util.js')
+
 const utils = require('../../utils/util.js')
+var httpNet = require("../../utils/httputils.js")
 
 Page({
 
@@ -110,44 +111,33 @@ Page({
 
 	},
 	submitdata: function (formdata) {
-		wx.request({
-			url: app.globalData.url + '/record/addRecord',
-			data:{
-				'uid':'test',
-				'date': formdata.detail.value.date,
-				'alllicheng': formdata.detail.value.currentlicheng,
-				'oilvalue': formdata.detail.value.oilvalue,
-				'currentmoney': formdata.detail.value.currentmoney,
-				'allmoney': formdata.detail.value.allmoney,
-				'about': formdata.detail.value.about,
-				'oiltype': formdata.detail.value.oiltype
-			},
-			success:d=>{
-				wx.showToast({
-					title: d.data.message
-				})
-			},
-			fail:e=>{
-
-			}
+		var params = {
+			'uid':'test',
+			'date': formdata.detail.value.date,
+			'alllicheng': formdata.detail.value.currentlicheng,
+			'oilvalue': formdata.detail.value.oilvalue,
+			'currentmoney': formdata.detail.value.currentmoney,
+			'allmoney': formdata.detail.value.allmoney,
+			'about': formdata.detail.value.about,
+			'oiltype': formdata.detail.value.oiltype
+		}
+		httpNet.getRequest("record/addRecord",params,function(res){
+			wx.showToast({
+				title: res.message
+			})
 		})
 	},
 	requstOilType:function(){
-		wx.request({
-			url: app.globalData.url +'/public/getoiltype',
-			success:d=>{
-				var array = new Array()
-				for(var index in d.data.data){
-					var oilname = d.data.data[index].oilname
-					array.push(oilname)	
-				}
-				this.setData({
-					oilarray: array
-				})
-			},
-			fail:e=>{
-
+		var that = this
+		httpNet.getRequest("public/getoiltype",null,function(res){
+			var array = new Array()
+			for(var index in res.data){
+				var oilname = res.data[index].oilname
+				array.push(oilname)	
 			}
+			that.setData({
+				oilarray: array
+			})
 		})
 	}
 })

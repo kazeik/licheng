@@ -1,6 +1,7 @@
 //index.js
 //获取应用实例
 var utils = require("../../utils/util.js");
+var httpNet = require("../../utils/httputils.js")
 
 const app = getApp()
 
@@ -101,24 +102,15 @@ Page({
 		}
 	},
 	requestMainData: function () {
-		wx.request({
-			url: app.globalData.url + 'user/gethomedata',
-			data: {
-				'uid': 'test'
-			},
-			success: d => {
-				if (d.data.flag == '1') {
-					this.setData({
-						oilValue: d.data.data.alloilvalue + "L",
-						moneyValue: d.data.data.allmoney + "元",
-						pjlc: d.data.data.pingjun+"L",
-						ljlc: d.data.data.alllicheng+"公里"
-					})
-				}
-			},
-			fail: e => {
-
-			}
+		var that = this
+		var params = { 'uid': 'test' }
+		httpNet.getRequest('user/gethomedata', params, function (res) {
+			that.setData({
+				oilValue: res.data.alloilvalue + "L",
+				moneyValue: res.data.allmoney + "元",
+				pjlc: res.data.pingjun + "L",
+				ljlc: res.data.alllicheng + "公里"
+			})
 		})
 	},
 	//记录数据
@@ -137,17 +129,10 @@ Page({
 		}, 2000);
 	},
 	requestAdInfo: function () {
-		wx.request({
-			url: app.globalData.url + 'public/getoilprice/',
-			data: {
-				"date": utils.formatTimeYMD()
-			},
-			success: d => {
-				
-			},
-			fail: e => {
-				
-			}
+		var that = this
+		var params = {"date": utils.formatTimeYMD()}
+		httpNet.getRequest('public/getoilprice/',params,function(res){
+
 		})
 	}
 })

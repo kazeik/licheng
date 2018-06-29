@@ -1,6 +1,7 @@
 
 const app = getApp()
 var wxCharts = require('../../utils/wxcharts.js')
+var httpNet = require("../../utils/httputils.js")
 var lineCharts = null
 var oilLineCharts = null;
 
@@ -172,37 +173,26 @@ Page({
 	},
 
 	getDataByNet: function () {
-		wx.showLoading({
-			title: '加载中',
-		})
-		wx.request({
-			url: app.globalData.url + 'record/getallrecordbyuser',
-			data: {
-				"uid": "test"
-			},
-			success: d => {
-				wx.hideLoading()
-				var tempCategories = new Array()
-				var oilmass = new Array()
-				var oilPrice = new Array()
-				for (var index in d.data.data) {
-					var item = d.data.data[index]
-					tempCategories.push(item.date)
-					oilmass.push(item.oilmass)
-					oilPrice.push(item.oilmoney)
-					this.setData({
-						categories: tempCategories,
-						l_series_oil: oilmass,
-						l_series_price: oilPrice
-					})
-				}
-
-				this.oilPriceAndOilValue()
-				this.colOil()
-			},
-			fail: e => {
-				wx.hideLoading()
+		var that= this
+		var params={"uid": "test"}
+		httpNet.getRequest('record/getallrecordbyuser',params,function(res){
+			var tempCategories = new Array()
+			var oilmass = new Array()
+			var oilPrice = new Array()
+			for (var index in res.data) {
+				var item = res.data[index]
+				tempCategories.push(item.date)
+				oilmass.push(item.oilmass)
+				oilPrice.push(item.oilmoney)
+				that.setData({
+					categories: tempCategories,
+					l_series_oil: oilmass,
+					l_series_price: oilPrice
+				})
 			}
+
+			that.oilPriceAndOilValue()
+			that.colOil()
 		})
 	}
 })

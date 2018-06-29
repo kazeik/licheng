@@ -1,4 +1,5 @@
 const app = getApp();
+var httpNet = require("../../utils/httputils.js")
 Page({
 
   /**
