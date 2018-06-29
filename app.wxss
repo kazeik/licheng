@@ -40,3 +40,10 @@
 	width: 100%;
 	text-align: right;
 }
+.line{
+	background: #cccccc;
+	height: 1rpx;
+	width: 100%;
+	margin-top: 2rpx;
+	margin-bottom: 2rpx;
+}

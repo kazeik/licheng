@@ -10,6 +10,28 @@
 	margin: 10rpx;
 }
 .lineview{
-	display: flex;
+	 display: flex; 
 	flex-flow: row;
+	height: 35px;
+	line-height: 35px;
+}
+
+.cellline{
+	display: flex;
+	flex-direction: column;
+}
+
+.imgtext{
+	height: 30px;
+	line-height: 30px;
+	 /* text-align: center;   */
+	 font-size: 16px; 
+	padding-left: 10rpx;
+}
+.item_title{
+	padding-top: 10rpx;
+	padding-right: 10rpx;
+	padding-bottom: 10rpx;
+	padding-left: 30rpx;
+	font-size: 14px;
 }
