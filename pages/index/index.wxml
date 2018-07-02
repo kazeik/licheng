@@ -14,7 +14,7 @@
     <view class='toprang'>
         <view class='info'>
 			<view class='cartitle'>
-			 <text class='cartext'>{{carInfo.itemtitle}}</text>
+			 <text class='cartext'>{{carInfo.carbrand+" "+ carInfo.cartype}}</text>
 			</view>
            
             <view>

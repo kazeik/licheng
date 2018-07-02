@@ -103,13 +103,15 @@ Page({
 	},
 	requestMainData: function () {
 		var that = this
-		var params = { 'uid': 'test' }
+		var params = { 'uid': '1213' }
 		httpNet.getRequest('user/gethomedata', params, function (res) {
+			console.log(JSON.stringify(res))
 			that.setData({
 				oilValue: res.data.alloilvalue + "L",
 				moneyValue: res.data.allmoney + "元",
 				pjlc: res.data.pingjun + "L",
-				ljlc: res.data.alllicheng + "公里"
+				ljlc: res.data.alllicheng + "公里",
+				carInfo:res.data.car
 			})
 		})
 	},
