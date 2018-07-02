@@ -174,15 +174,17 @@ Page({
 
 	getDataByNet: function () {
 		var that= this
-		var params={"uid": "test"}
+		var params={"uid": "1213"}
 		httpNet.httpRequest().setUrl('record/getallrecordbyuser').setParams(params).success(function(res){
 			var tempCategories = new Array()
 			var oilmass = new Array()
 			var oilPrice = new Array()
 			for (var index in res.data) {
 				var item = res.data[index]
+				console.log(JSON.stringify(item))
 				oilmass.push(item.oilmass)
 				oilPrice.push(item.oilmoney)
+				tempCategories.push(item.date)
 				that.setData({
 					categories: tempCategories,
 					l_series_oil: oilmass,

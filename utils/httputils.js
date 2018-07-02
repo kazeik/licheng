@@ -44,7 +44,7 @@ HttpNet.prototype={
         return this;
     },
     setTitle:function(title){
-        this.titile = title.length==0 || title == null || title== undefined?'加载中':title;
+        this.titile = title;
         return this;
     },
     success:function(func){
@@ -58,7 +58,7 @@ HttpNet.prototype={
     build:function(){
         var that = this;
         wx.showLoading({
-            title: that.title,
+            title:  that.title == null || that.title== undefined?'加载中':title,
         })
         console.log("当前请求对象 -> "+JSON.stringify(that))
         wx.request({
