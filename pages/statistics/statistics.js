@@ -175,13 +175,12 @@ Page({
 	getDataByNet: function () {
 		var that= this
 		var params={"uid": "test"}
-		httpNet.getRequest('record/getallrecordbyuser',params,function(res){
+		httpNet.httpRequest().setUrl('record/getallrecordbyuser').setParams(params).success(function(res){
 			var tempCategories = new Array()
 			var oilmass = new Array()
 			var oilPrice = new Array()
 			for (var index in res.data) {
 				var item = res.data[index]
-				tempCategories.push(item.date)
 				oilmass.push(item.oilmass)
 				oilPrice.push(item.oilmoney)
 				that.setData({
@@ -193,6 +192,6 @@ Page({
 
 			that.oilPriceAndOilValue()
 			that.colOil()
-		})
+		}).build()
 	}
 })

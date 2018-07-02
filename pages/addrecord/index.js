@@ -121,15 +121,15 @@ Page({
 			'about': formdata.detail.value.about,
 			'oiltype': formdata.detail.value.oiltype
 		}
-		httpNet.getRequest("record/addRecord",params,function(res){
+		httpNet.httpRequest().setUrl('record/addRecord').success(function(res){
 			wx.showToast({
 				title: res.message
 			})
-		})
+		}).build()
 	},
 	requstOilType:function(){
 		var that = this
-		httpNet.getRequest("public/getoiltype",null,function(res){
+		httpNet.httpRequest().setUrl('public/getoiltype').success(function(res){
 			var array = new Array()
 			for(var index in res.data){
 				var oilname = res.data[index].oilname
@@ -138,6 +138,6 @@ Page({
 			that.setData({
 				oilarray: array
 			})
-		})
+		}).build()
 	}
 })

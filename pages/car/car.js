@@ -26,7 +26,7 @@ Page({
 			'carbrand': info.itemtitle,
 			'cartype': info.itemtitle
 		}
-		httpNet.getRequest("car/addcar",params,function(res){
+		httpNet.httpRequest().setUrl("car/addcar").setParams(params).success(function(res){
 			wx.showToast({
 				title: res.data.message,
 			})
@@ -44,7 +44,7 @@ Page({
 					}
 				})
 			}
-		})
+		}).build()
 	},
 	onLoad: function () {
 		this.loadcarsData();
@@ -86,7 +86,7 @@ Page({
 	},
 	loadcarsData:function(){
 		var that = this
-		httpNet.getRequest("public/loadcars",null,function(res){
+		httpNet.httpRequest().setUrl("public/loadcars").success(function(res){
 			if(res.flag=='1' && res.data.length != 0){
 				that.setData({ cardata: res.data })
 			}else{
@@ -94,6 +94,6 @@ Page({
 					title: res.message,
 				})
 			}
-		})
+		}).build()
 	}
 })

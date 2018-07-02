@@ -104,16 +104,20 @@ Page({
 	requestMainData: function () {
 		var that = this
 		var params = { 'uid': '1213' }
-		httpNet.getRequest('user/gethomedata', params, function (res) {
-			console.log(JSON.stringify(res))
+		httpNet.httpRequest().setUrl('user/gethomedata').
+		setParams(params).success(function (res) {
 			that.setData({
 				oilValue: res.data.alloilvalue + "L",
 				moneyValue: res.data.allmoney + "元",
 				pjlc: res.data.pingjun + "L",
 				ljlc: res.data.alllicheng + "公里",
-				carInfo:res.data.car
+				carInfo: res.data.car
 			})
-		})
+		}).fail(function (message) {
+			wx.showToast({
+				'title': message
+			})
+		}).build()
 	},
 	//记录数据
 	addrecord: function (data) {
@@ -133,8 +137,6 @@ Page({
 	requestAdInfo: function () {
 		var that = this
 		var params = {"date": utils.formatTimeYMD()}
-		httpNet.getRequest('public/getoilprice/',params,function(res){
-
-		})
+		httpNet.httpRequest().setUrl('public/getoilprice/').setParams(params).success(function(res){}).build()
 	}
 })
