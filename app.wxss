@@ -33,6 +33,12 @@
 	padding: 10px;
 	width: 20%;
 }
+.textview-single{
+	font-size: 12px;
+	color: "#999999";
+	padding: 10px;
+	width: 100%;
+}
 .textview-single-right{
 	font-size: 12px;
 	color: "#999999";

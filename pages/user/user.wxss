@@ -4,7 +4,10 @@
     align-items: center;
 	padding-left:30rpx;
 }
-
+.list_item_view{
+    display: flex;
+    flex-direction: column;
+}
 .userinfo-avatar {
     width: 128rpx;
     height: 128rpx;

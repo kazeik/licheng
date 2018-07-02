@@ -5,7 +5,9 @@
 		"pages/statistics/statistics",
 		"pages/addrecord/index",
 		"pages/user/user",
-		"pages/feedback/feedback"
+		"pages/feedback/feedback",
+		"pages/histroy/histroy",
+		"pages/about/about"
 	],
 	"window": {
 		"backgroundTextStyle": "light",

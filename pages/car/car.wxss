@@ -33,5 +33,6 @@
 	padding-right: 10rpx;
 	padding-bottom: 10rpx;
 	padding-left: 30rpx;
+	width: 100%;
 	font-size: 14px;
 }

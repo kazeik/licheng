@@ -8,12 +8,12 @@ function netRequest(url, method, params, suc) {
         method: method, // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
         // header: {}, // 设置请求的 header
         success: function (res) {
+			wx.hideLoading()
             if (res.data.flag == '1') {
                 suc(res.data)
             } else {
                 wx.showToast(res.data.message)
             }
-            wx.hideLoading()
         },
         fail: function (res) {
             wx.hideLoading()
