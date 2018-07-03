@@ -36,6 +36,7 @@ App({
   globalData: {
     userInfo: null,
 	car:null,
-	url:'http://localhost/licheng/index.php/'
+  url:'http://localhost/licheng/index.php/',
+  debug:true
   }
 })

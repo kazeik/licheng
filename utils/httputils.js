@@ -59,7 +59,8 @@ HttpNet.prototype={
         var that = this;
         wx.showLoading({
             title:  that.title == null || that.title== undefined?'加载中':title,
-        })
+        });
+        if(getApp().globalData.debug)
         console.log("当前请求对象 -> "+JSON.stringify(that))
         wx.request({
             url: that.url,
@@ -67,16 +68,17 @@ HttpNet.prototype={
             method: that.method, // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
             header: {"Content-Type": "application/x-www-form-urlencoded"}, // 设置请求的 header
             success: function (res) {
-                console.log("当前返回数据 -> "+JSON.stringify(res.data))
-                wx.hideLoading()
+                if(getApp().globalData.debug)
+                console.log("当前返回数据 -> "+JSON.stringify(res.data));
+                wx.hideLoading();
                 if (res.data.flag == '1') {
-                    that.success(res.data)
+                    that.success(res.data);
                 } else {
-                    that.fail(res.data.message)
+                    that.fail(res.data.message);
                 }
             },
             fail: function (res) {
-                wx.hideLoading()
+                wx.hideLoading();
                 wx.showToast({
                     'title':res.errMsg
                 })
