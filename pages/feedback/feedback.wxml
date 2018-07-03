@@ -1,1 +1,8 @@
-<view></view>
+<view class='page'>
+    <form bindsubmit="bindFormSubmit">
+        <textarea placeholder="请输入您宝贵的意见" name="textarea" />
+        <view class="btn">
+            <button class='weuibtn' form-type="submit"> 提交 </button>
+        </view>
+    </form>
+</view>

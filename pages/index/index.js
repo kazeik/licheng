@@ -14,6 +14,7 @@ Page({
 		canIUse: wx.canIUse('button.open-type.getUserInfo'),
 		hideAd: true,
 		adInfo: null,
+		carInfoText:'',
 		carInfo: {},
 		oilValue: "123L",
 		moneyValue: "123元",
@@ -111,7 +112,8 @@ Page({
 				moneyValue: res.data.allmoney + "元",
 				pjlc: res.data.pingjun + "L",
 				ljlc: res.data.alllicheng + "公里",
-				carInfo: res.data.car
+				carInfo: res.data.car,
+				carInfoText: res.data.car.carbrand + " "+res.data.car.cartype
 			})
 		}).fail(function (message) {
 			wx.showToast({
@@ -138,5 +140,10 @@ Page({
 		var that = this
 		var params = {"date": utils.formatTimeYMD()}
 		httpNet.httpRequest().setUrl('public/getoilprice/').setParams(params).success(function(res){}).build()
+	},
+	carchoice:function(){
+		wx.navigateTo({
+			url: '../car/car',
+		})
 	}
 })

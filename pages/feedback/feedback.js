@@ -8,7 +8,16 @@ Page({
   data: {
 	
   },
-
+  bindFormSubmit:function(e){
+		console.log(e.detail.value.textarea)
+		let inputValue=  e.datail.value.textarea
+		let params = {"message":inputValue}
+		httpNet.httpRequest().setUrl('public/feedback').setParams(params).success(function(res){
+			wx.showToast({
+				title: res.data.message,
+			})
+		}).build()
+  },
   /**
    * 生命周期函数--监听页面加载
    */

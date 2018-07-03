@@ -13,8 +13,8 @@
     <!-- 顶部区域 -->
     <view class='toprang'>
         <view class='info'>
-			<view class='cartitle'>
-			 <text class='cartext'>{{carInfo.carbrand+" "+ carInfo.cartype}}</text>
+			<view class='cartitle' bindtap='carchoice'>
+			 <text class='cartext' >{{carInfoText}}</text>
 			</view>
            
             <view>

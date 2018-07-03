@@ -78,7 +78,7 @@ HttpNet.prototype={
             fail: function (res) {
                 wx.hideLoading()
                 wx.showToast({
-                    'title':res.data.message
+                    'title':res.errMsg
                 })
             }
         })

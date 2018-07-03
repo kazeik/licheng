@@ -112,16 +112,16 @@ Page({
 	},
 	submitdata: function (formdata) {
 		var params = {
-			'uid':'test',
+			'uid':'1213',
 			'date': formdata.detail.value.date,
 			'alllicheng': formdata.detail.value.currentlicheng,
 			'oilvalue': formdata.detail.value.oilvalue,
 			'currentmoney': formdata.detail.value.currentmoney,
 			'allmoney': formdata.detail.value.allmoney,
 			'about': formdata.detail.value.about,
-			'oiltype': formdata.detail.value.oiltype
+			'oiltype': oilarray[formdata.detail.value.oiltype]
 		}
-		httpNet.httpRequest().setUrl('record/addRecord').success(function(res){
+		httpNet.httpRequest().setUrl('record/addRecord').setParams(params).setMethod('post').success(function(res){
 			wx.showToast({
 				title: res.message
 			})
