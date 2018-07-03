@@ -111,6 +111,7 @@ Page({
 
 	},
 	submitdata: function (formdata) {
+		console.log(formdata)
 		var params = {
 			'uid':'1213',
 			'date': formdata.detail.value.date,
@@ -119,7 +120,7 @@ Page({
 			'currentmoney': formdata.detail.value.currentmoney,
 			'allmoney': formdata.detail.value.allmoney,
 			'about': formdata.detail.value.about,
-			'oiltype': oilarray[formdata.detail.value.oiltype]
+			'oiltype': this.data.oilarray[formdata.detail.value.oiltype]
 		}
 		httpNet.httpRequest().setUrl('record/addRecord').setParams(params).setMethod('post').success(function(res){
 			wx.showToast({
