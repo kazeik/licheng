@@ -181,7 +181,6 @@ Page({
 			var oilPrice = new Array()
 			for (var index in res.data) {
 				var item = res.data[index]
-				console.log(JSON.stringify(item))
 				oilmass.push(item.oilmass)
 				oilPrice.push(item.oilmoney)
 				tempCategories.push(item.date)

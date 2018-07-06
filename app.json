@@ -19,8 +19,7 @@
 		"color": "#a9b7b7",
 		"selectedColor": "#1afa29",
 		"borderStyle": "white",
-		"list": [
-			{
+		"list": [{
 				"selectedIconPath": "/imgs/icon_add_pressed.png",
 				"iconPath": "/imgs/icon_add_normal.png",
 				"pagePath": "pages/index/index",
@@ -39,5 +38,9 @@
 				"text": "我"
 			}
 		]
+	},
+	"networkTimeout": {
+		"request": 10000,
+		"downloadFile": 10000
 	}
 }

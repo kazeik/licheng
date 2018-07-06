@@ -37,6 +37,6 @@ App({
     userInfo: null,
 	car:null,
   url:'http://localhost/licheng/index.php/',
-  debug:true
+  debug:false
   }
 })
