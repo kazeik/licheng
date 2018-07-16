@@ -36,7 +36,7 @@ App({
   globalData: {
     userInfo: null,
 	car:null,
-  url:'http://localhost/licheng/index.php/',
+	url:'http://www.xyangb.cn/licheng/index.php/api/',
   debug:false
   }
 })

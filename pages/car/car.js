@@ -15,20 +15,22 @@ Page({
 		var pages = getCurrentPages()
 		var currentPages = pages[pages.length - 1]
 		var lastPages = pages[pages.length - 2]
+		console.log(JSON.stringify(event))
 		lastPages.setData({ carInfo: event.currentTarget.dataset.item })
 		// wx.setStorageSync('car', event.currentTarget.dataset.item)
 		this.setCarData(event.currentTarget.dataset.item)
 	},
 	setCarData: function (info) {
-		var longtime = new Date().getTime()
 		var params = {
-			'uid': '1237' + longtime,
-			'carbrand': info.itemtitle,
-			'cartype': info.itemtitle
+			'nickname':'苏泽',
+			'uid': '1213',
+			'carbrand': info.carbrand,
+			'cartype': info.cartype
 		}
 		httpNet.httpRequest().setUrl("car/addcar").setParams(params).success(function(res){
+			console.log(res)
 			wx.showToast({
-				title: res.data.message,
+				title: res.message,
 			})
 			if (res.flag == "1" && res.data == "1") {
 				wx.setStorage({

@@ -106,14 +106,17 @@ Page({
 		var params = { 'uid': '1213' }
 		httpNet.httpRequest().setUrl('user/gethomedata').
 		setParams(params).success(function (res) {
-			that.setData({
-				oilValue: res.data.alloilvalue + "L",
-				moneyValue: res.data.allmoney + "元",
-				pjlc: res.data.pingjun + "L",
-				ljlc: res.data.alllicheng + "公里",
-				carInfo: res.data.car,
-				carInfoText: res.data.car.carbrand + " "+res.data.car.cartype
-			})
+			console.log(res.data)
+			var params = {}
+			params['oilValue'] = res.data.alloilvalue + "L"
+			params['moneyValue'] = res.data.allmoney + "元"
+			params['pjlc'] = res.data.pingjun + "L"
+			params['ljlc'] = res.data.alllicheng + "公里"
+			params['carInfo'] = res.data.car
+			if(res.data.car){
+				params['carInfoText'] = res.data.car.carbrand + " " + res.data.car.cartype
+			}
+			that.setData(params)
 		}).fail(function (message) {
 			wx.showToast({
 				'title': message
