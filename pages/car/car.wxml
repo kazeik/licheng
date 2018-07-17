@@ -1,17 +1,17 @@
 <!-- <import src="../../comm/listview/icontext/index.wxml"></import> -->
 
 <view class="main">
-    <view wx:for="{{cardata}}" data-item='{{cardata}}' wx:key="{{cardata}}"  wx:for-item="item"  >
+    <view wx:for="{{cardata}}"  wx:key="{{cardata}}"  wx:for-item="params" wx:for-index="{{index}}" >
         <view class='cellline'>
             <view class='lineview'>
                 <image src='{{itemicon.length==0?itemicon:"../../imgs/icon.jpg"}}' class='smallicon'></image>
-                <view class='imgtext'>{{item.cartype}}</view>
+                <view class='imgtext' >{{params.cartype}}</view>
             </view>
             <view class='line'></view>
         </view>
 		 <view class='line'></view>
-        <view wx:for="{{item.data}}" wx:key="{{index}}" bindtap="itemevent" data-item='{{item}}'>
-            <text class='item_title'>{{item.cartype}}</text>
+        <view wx:for="{{params.data}}" wx:key="{{params.data}}" bindtap="itemevent" data-params='{{params}}' data-index='{{index}}'>
+            <text class='item_title'>{{ item.cartype}}</text>
         </view>
  <view class='line'></view>
     </view>

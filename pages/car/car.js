@@ -10,29 +10,31 @@ Page({
 		canIUse: wx.canIUse('button.open-type.getUserInfo'),
 		cardata: null,
 	},
-
 	itemevent: function (event) {
-		var pages = getCurrentPages()
-		var currentPages = pages[pages.length - 1]
-		var lastPages = pages[pages.length - 2]
-		console.log(JSON.stringify(event))
-		lastPages.setData({ carInfo: event.currentTarget.dataset.item })
-		// wx.setStorageSync('car', event.currentTarget.dataset.item)
-		this.setCarData(event.currentTarget.dataset.item)
+		// var pages = getCurrentPages()
+		// var currentPages = pages[pages.length - 1]
+		// var lastPages = pages[pages.length - 2]
+		// console.log(JSON.stringify(event))
+		// let caritem = event.currentTarget.dataset.params.data[event.currentTarget.dataset.index]
+		// lastPages.setData({ carInfo: caritem})
+		// wx.setStorageSync('car', event.currentTarget.dataset)
+		this.setCarData(event.currentTarget.dataset)
 	},
 	setCarData: function (info) {
+		let carbrand = info.params.cartype
+		let cartype  = info.params.data[info.index].cartype
 		var params = {
 			'nickname':'苏泽',
 			'uid': '1213',
-			'carbrand': info.carbrand,
-			'cartype': info.cartype
+			'carbrand': carbrand,
+			'cartype': cartype
 		}
 		httpNet.httpRequest().setUrl("car/addcar").setParams(params).success(function(res){
 			console.log(res)
 			wx.showToast({
 				title: res.message,
 			})
-			if (res.flag == "1" && res.data == "1") {
+			if (res.flag == "1") {
 				wx.setStorage({
 					key: 'car',
 					data: info,

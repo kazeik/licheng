@@ -16,8 +16,8 @@ Page({
 		adInfo: null,
 		carInfoText:'',
 		carInfo: {},
-		oilValue: "123L",
-		moneyValue: "123元",
+		oilValue: "0L",
+		moneyValue: "0元",
 		pjlc: '',
 		ljlc: ''
 	},
@@ -32,7 +32,7 @@ Page({
 
 	onShow: function (ex) {
 		// this.checkDatadb()
-
+		this.checkDatadb()
 	},
 
 	// onShow:function(){
@@ -67,7 +67,7 @@ Page({
 				}
 			})
 		}
-		this.checkDatadb()
+		// this.checkDatadb()
 		// this.changeAdInfo()
 		this.requestAdInfo()
 	},
@@ -81,6 +81,7 @@ Page({
 	//检查是否设置过车辆
 	checkDatadb: function (dbdata) {
 		var car = wx.getStorageSync("car")
+		console.log("当前保存的车辆 ："+JSON.stringify(car))
 		if (!car) {
 			wx.showModal({
 				title: '提示',
